@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Haoyu Wang (王昊禹), PhD student at Shanghai Jiao Tong University. Embodied intelligence, reinforcement learning, foundation models, and optimal control.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Haoyu Wang · 王昊禹</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c65ad'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,sans-serif' font-size='32' fill='white'%3EHW%3C/text%3E%3C/svg%3E">
+  <style>
+    :root { color-scheme:light; --ink:#172535; --muted:#687583; --blue:#145cc0; --line:#e1e7ee; --pale:#f1f6fc; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:30px; }
+    body { margin:0; color:var(--ink); background:#fff; font:16px/1.7 Arial, "Microsoft YaHei", sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; text-underline-offset:4px; }
+    a:hover { text-decoration:underline; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline:2px solid var(--blue); outline-offset:5px; }
+    button { font:inherit; cursor:pointer; }
+    .skip { position:fixed; top:-80px; left:16px; padding:10px 16px; background:#fff; z-index:10; }
+    .skip:focus { top:12px; }
+    .shell { width:min(1060px, calc(100% - 80px)); margin:auto; }
+    .topbar { display:flex; align-items:center; justify-content:flex-end; padding:27px 0 23px; border-bottom:1px solid var(--line); }
+    .topnav { display:flex; gap:29px; align-items:center; font-size:14px; }
+    .topnav a { color:var(--muted); }
+    .lang { border:1px solid #d6e0ed; background:#fff; color:var(--ink); border-radius:5px; padding:4px 11px; font-size:14px; }
+    .lang:hover { background:var(--pale); }
+    .hero { display:grid; grid-template-columns:minmax(0,1fr) 270px; gap:65px; align-items:center; padding:40px 0 35px; }
+    .eyebrow { color:var(--blue); font-size:13px; letter-spacing:1.8px; text-transform:uppercase; font-weight:600; margin:0 0 17px; }
+    h1 { margin:0; font:400 clamp(42px,4.4vw,54px)/1.12 Georgia,"Times New Roman",serif; letter-spacing:-2.1px; }
+    .name-cn { font-size:23px; font-weight:400; letter-spacing:4px; color:#647383; margin:10px 0 23px; }
+    p { margin:0 0 14px; }
+    .bio { max-width:650px; }
+    .research-statement { margin:0; }
+    .identity-note { color:var(--muted); font-size:14px; margin-top:14px; }
+    .profile-links { display:flex; flex-wrap:wrap; align-items:center; gap:13px 23px; margin-top:23px; font-size:14px; }
+    .profile-links a:first-child { color:#fff; background:var(--blue); padding:7px 18px; border-radius:4px; }
+    figure { margin:0; }
+    .portrait img { width:270px; height:270px; display:block; object-fit:cover; border-radius:5px; }
+    .interests { display:flex; flex-wrap:wrap; gap:8px 27px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:18px 0; font-size:14px; color:#425971; }
+    .interests span:first-child { color:var(--muted); margin-right:auto; }
+    section { margin-top:55px; }
+    .news-board { margin-top:13px; }
+    .news-label { color:var(--muted); font-size:14px; }
+    .heading-cn { font:16px "Microsoft YaHei",sans-serif; color:var(--muted); margin-left:7px; }
+    .news-item { display:grid; grid-template-columns:76px minmax(0,1fr); gap:24px; padding:24px 26px; border-bottom:1px solid var(--line); }
+    .news-featured { background:var(--pale); border-left:3px solid var(--blue); border-bottom:0; border-radius:0 5px 5px 0; }
+    .news-celebration { position:relative; overflow:hidden; background:linear-gradient(115deg,#f0f5ff,#f8f5ff 75%,#fff8ed); border-left-color:#7960c2; }
+    .news-celebration .news-type { color:#6a4aa6; }
+    .acceptance-heading { display:flex; align-items:center; gap:13px; flex-wrap:wrap; margin:3px 0 7px; }
+    .acceptance-heading h3 { margin:0; flex:1; min-width:0; }
+    .celebrate { flex:none; border:0; background:transparent; padding:4px; font-size:35px; line-height:1.2; border-radius:8px; touch-action:manipulation; }
+    .celebrate:hover { background:#ffffffa6; }
+    .confetti-layer { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+    .confetti-piece { position:absolute; width:7px; height:10px; border-radius:1px; }
+    .conference { color:#6a4aa6; font-weight:600; font-size:14px; }
+    .news-item time { color:var(--muted); font-size:14px; padding-top:1px; line-height:1.6; }
+    .news-item time span { display:block; color:var(--ink); font-size:19px; letter-spacing:1px; }
+    .news-type { font-size:14px; font-weight:500; color:var(--blue); line-height:1.6; }
+    .news-item .news-type { margin-bottom:9px; }
+    .news-item h3 { font-size:21px; margin:3px 0 5px; }
+    .news-item p { margin:0; max-width:740px; }
+    .news-links { display:flex; flex-wrap:wrap; gap:22px; font-size:14px; margin-top:10px; }
+    .section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:25px; }
+    h2 { margin:0; font:400 31px/1.3 Georgia,"Microsoft YaHei",serif; letter-spacing:-.5px; }
+    .section-heading > a { font-size:14px; }
+    .publication { display:grid; grid-template-columns:76px minmax(0,1fr); gap:22px; padding:26px 0; border-top:1px solid var(--line); }
+    .paper-year { font-size:14px; color:var(--muted); padding-top:3px; }
+    .paper-year span { display:block; font-size:12px; color:var(--blue); margin-top:7px; letter-spacing:.7px; }
+    h3 { margin:0 0 7px; font-size:18px; font-weight:600; line-height:1.5; }
+    h3 a { color:var(--ink); }
+    h3 a:hover { color:var(--blue); }
+    .authors { color:var(--muted); font-size:14px; margin:0 0 10px; }
+    .authors strong { color:var(--ink); font-weight:600; }
+    .contribution-note { margin:-5px 0 12px; color:#6a4aa6; font-size:12px; }
+    .authors sup { color:#6a4aa6; margin-left:1px; }
+    .journal-metric { color:#6a4aa6; font-size:12px; white-space:nowrap; }
+    .paper-description { margin:0; color:#465463; }
+    .paper-links { display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; font-size:14px; }
+    details { border-top:1px solid var(--line); padding-top:17px; font-size:14px; }
+    summary { cursor:pointer; color:var(--blue); width:fit-content; }
+    .earlier { margin-top:22px; }
+    .earlier article { padding:0 0 17px 22px; }
+    .earlier h3 { font-size:16px; }
+    .venue { color:var(--muted); font-size:14px; margin:0; }
+    .project-grid { display:grid; grid-template-columns:1fr 1fr; column-gap:38px; }
+    .project { border-top:1px solid var(--line); padding:22px 0 13px; }
+    .project-title { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:7px; }
+    .project-title h3 { font-size:20px; margin:0; }
+    .project-title span { color:var(--muted); font-size:12px; }
+    .project p { color:#465463; font-size:15px; margin-bottom:10px; }
+    .project > a { font-size:14px; }
+    .zyr-project { margin-bottom:26px; border:1px solid #dce5df; border-radius:7px; overflow:hidden; background:#fbfcfa; }
+    .zyr-cover { display:block; width:100%; height:auto; }
+    .zyr-copy { padding:25px 29px 23px; }
+    .zyr-header { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .zyr-header h3 { font-size:24px; margin:0; }
+    .archive-badge { color:#42664d; background:#edf3ec; font-size:11px; letter-spacing:.7px; padding:4px 9px; border:1px solid #d7e2d5; border-radius:4px; }
+    .zyr-copy p { color:#465463; font-size:15px; }
+    .zyr-status { border-left:2px solid #8b9e82; padding-left:13px; margin:17px 0; }
+    .star-count { display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border:1px solid #dce3eb; border-radius:4px; font-size:12px; color:#5f6b77; white-space:nowrap; }
+    .star-count:hover { border-color:#aebed0; text-decoration:none; }
+    .project-actions { display:flex; align-items:center; gap:18px; font-size:14px; }
+    .zyr-meta { display:flex; flex-wrap:wrap; gap:7px 21px; color:#71806f; font-size:12px; }
+    .contact { margin-top:51px; padding:28px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .contact h2 { font-size:26px; margin-bottom:7px; }
+    .contact p { color:var(--muted); margin:0; font-size:14px; }
+    .contact > a { font-size:17px; }
+    .affiliations { display:flex; align-items:center; justify-content:center; padding:26px 0; margin-top:28px; }
+    .affiliations a { display:block; }
+    .university-mark { width:67px; height:67px; display:block; background:#fff; border-radius:50%; }
+    .school-mark { display:block; width:100%; height:auto; filter:brightness(0); opacity:.78; }
+    .affiliations .school-link { width:min(820px,100%); }
+    footer { margin-top:19px; padding:21px 0 29px; border-top:1px solid var(--line); display:flex; justify-content:flex-end; gap:15px; color:var(--muted); font-size:12px; }
+    html[lang="zh-CN"] h2 { font-family:"Microsoft YaHei",sans-serif; font-size:27px; }
+    @media(max-width:850px) { .hero { gap:35px; grid-template-columns:minmax(0,1fr) 220px; } .portrait img { width:220px; height:280px; } h1 { font-size:46px; } .interests { gap:9px 20px; } .interests span:first-child { flex-basis:100%; } }
+    @media(max-width:620px) {
+      .shell { width:calc(100% - 40px); } .topbar { padding:20px 0; } .topnav { gap:17px; } .topnav .nav-projects { display:none; }
+      .hero { grid-template-columns:1fr; gap:0; padding:30px 0; } .portrait { display:none; }
+      h1 { font-size:45px; letter-spacing:-1.5px; } .name-cn { margin:9px 0 20px; font-size:21px; } .eyebrow { font-size:12px; margin-bottom:12px; }
+      .profile-links { gap:12px 19px; } .interests { font-size:13px; gap:7px 18px; } section { margin-top:38px; }
+      h2 { font-size:27px; } .section-heading { flex-wrap:wrap; gap:7px 15px; margin-bottom:18px; } .section-heading > a { font-size:13px; }
+      .news-item { grid-template-columns:47px minmax(0,1fr); gap:15px; padding:20px 15px; } .news-item time span { font-size:15px; } .news-item time { font-size:12px; } .news-item h3 { font-size:20px; }
+      .news-celebration .news-type { padding-right:29px; } .acceptance-heading h3 { flex-basis:100%; } .celebrate { position:absolute; top:13px; right:12px; font-size:27px; }
+      .publication { grid-template-columns:1fr; gap:9px; padding:22px 0; } .paper-year { display:flex; gap:12px; align-items:center; padding:0; } .paper-year span { display:inline; margin:0; }
+      h3 { font-size:17px; } .project-grid { grid-template-columns:1fr; } .project { padding:20px 0; }
+      .affiliations { padding:18px 0; }
+      .zyr-copy { padding:20px; } .zyr-header h3 { font-size:21px; }
+      .contact { align-items:flex-start; flex-direction:column; gap:14px; } footer { flex-wrap:wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#research" data-en="Skip to research" data-zh="跳转到研究成果">Skip to research</a>
+  <div class="shell" id="top">
+    <header class="topbar">
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#news" data-en="News" data-zh="动态">News</a>
+        <a href="#research" data-en="Research" data-zh="研究">Research</a>
+        <a class="nav-projects" href="#projects" data-en="Projects" data-zh="项目">Projects</a>
+        <button class="lang" type="button" id="language" aria-label="切换为中文">中文</button>
+      </nav>
+    </header>
+    <main>
+      <div class="hero">
+        <div class="bio">
+          <p class="eyebrow" data-en="PhD student · Shanghai Jiao Tong University" data-zh="博士研究生 · 上海交通大学">PhD student · Shanghai Jiao Tong University</p>
+          <h1>Haoyu Wang</h1>
+          <p class="name-cn" lang="zh-CN">王昊禹</p>
+          <p><span data-en="I'm a PhD student in the " data-zh="我目前在">I'm a PhD student in the </span><a href="https://sais.sjtu.edu.cn/" data-en="School of Automation and Intelligent Sensing" data-zh="上海交通大学自动化与感知学院">School of Automation and Intelligent Sensing</a><span data-en=" at Shanghai Jiao Tong University (SJTU), advised by Prof. Jingcheng Wang." data-zh="攻读博士学位，导师为 Jingcheng Wang 教授。"> at Shanghai Jiao Tong University (SJTU), advised by Prof. Jingcheng Wang.</span></p>
+          <p class="research-statement" data-en="My research interests span embodied intelligence, reinforcement learning, foundation models, and optimal control. My recent work focuses on embodied recursive self-improvement (RSI) and world models." data-zh="我的研究方向包括具身智能、强化学习、基础模型与最优化控制。近期工作聚焦具身递归自我改进（RSI）与世界模型。">My research interests span embodied intelligence, reinforcement learning, foundation models, and optimal control. My recent work focuses on embodied recursive self-improvement (RSI) and world models.</p>
+          <nav class="profile-links" aria-label="Profile links">
+            <a href="mailto:create_arc@sjtu.edu.cn" data-en="Email" data-zh="邮箱">Email</a>
+            <a href="https://scholar.google.com/citations?user=9uCAKdgAAAAJ&amp;hl=en">Google Scholar</a>
+            <a href="https://github.com/ARC0127">GitHub</a>
+          </nav>
+        </div>
+        <figure class="portrait"><img src="assets/github-avatar.png" alt="Mountain landscape with a winding road" width="270" height="314" fetchpriority="high"></figure>
+      </div>
+      <section class="news-board" id="news" aria-labelledby="news-heading">
+        <div class="section-heading"><h2 id="news-heading">News <span class="heading-cn" data-en="" data-zh="研究动态"></span></h2><span class="news-label" data-en="Latest work & updates" data-zh="最新工作与进展">Latest work & updates</span></div>
+        <div class="news-item news-featured news-celebration" id="fisher-accepted">
+          <time datetime="2026"><span>2026</span>NeurIPS</time>
+          <div>
+            <p class="news-type" data-en="Our paper was accepted at NeurIPS 2026!" data-zh="我们的论文被 NeurIPS 2026 录用啦！">Our paper was accepted at NeurIPS 2026!</p>
+            <div class="acceptance-heading"><h3><a href="https://arxiv.org/abs/2604.17919">Fisher Decorator: Refining Flow Policy via a Local Transport Map</a></h3><button class="celebrate" id="celebrate" type="button" aria-label="Celebrate Fisher Decorator's acceptance" title="Celebrate!" data-aria-en="Celebrate Fisher Decorator's acceptance" data-aria-zh="庆祝 Fisher Decorator 录用" data-title-en="Celebrate!" data-title-zh="放个礼炮！"><span aria-hidden="true">🎉</span></button></div>
+            <p data-en="This work improves flow policies using Fisher information and achieves state-of-the-art performance on OGBench and D4RL. It can help robots learn locomotion and manipulation from existing data, then continue improving through online interaction." data-zh="这项工作利用 Fisher 信息改进流策略，在 OGBench 和 D4RL 上取得 SOTA 表现。它可以帮助机器人从已有数据中学习运动与操作，并通过在线交互继续改进。">This work improves flow policies using Fisher information and achieves state-of-the-art performance on OGBench and D4RL. It can help robots learn locomotion and manipulation from existing data, then continue improving through online interaction.</p>
+            <div class="news-links"><a href="https://arxiv.org/abs/2604.17919" data-en="Read paper ↗" data-zh="阅读论文 ↗">Read paper ↗</a><a href="https://github.com/ARC0127/Fisher-Decorator" data-en="Code ↗" data-zh="项目代码 ↗">Code ↗</a></div>
+          </div>
+          <div class="confetti-layer" aria-hidden="true"></div>
+        </div>
+        <div class="news-item"><time datetime="2026-04-20"><span data-en="APR" data-zh="4 月">APR</span>2026</time><div><p class="news-type" data-en="Our paper is now on arXiv." data-zh="我们的新论文已在 arXiv 上发布。">Our paper is now on arXiv.</p><h3><a href="https://arxiv.org/abs/2604.17919">Fisher Decorator: Refining Flow Policy via a Local Transport Map</a></h3><p data-en="This work introduces Fisher-guided flow policy refinement for robotics, with state-of-the-art results on OGBench and D4RL. We have also released the code." data-zh="这项工作提出面向机器人的 Fisher 信息引导流策略改进方法，在 OGBench 和 D4RL 上取得 SOTA 表现。我们也公开了代码。">This work introduces Fisher-guided flow policy refinement for robotics, with state-of-the-art results on OGBench and D4RL. We have also released the code.</p><div class="news-links"><a href="https://arxiv.org/abs/2604.17919" data-en="Read paper ↗" data-zh="阅读论文 ↗">Read paper ↗</a><a href="https://github.com/ARC0127/Fisher-Decorator" data-en="Code ↗" data-zh="项目代码 ↗">Code ↗</a></div></div></div>
+        <div class="news-item"><time datetime="2026-03-24"><span data-en="MAR" data-zh="3 月">MAR</span>2026</time><div><p class="news-type" data-en="Our paper is now on arXiv." data-zh="我们的新论文已在 arXiv 上发布。">Our paper is now on arXiv.</p><h3><a href="https://arxiv.org/abs/2603.23232">GEM: Guided Expectation-Maximization for Behavior-Normalized Candidate Action Selection in Offline RL</a></h3><p data-en="This work explores how robots can choose better actions from several candidates. We evaluate GEM on D4RL Locomotion, AntMaze, and Maze2D, and show how to adjust inference compute without retraining the policy." data-zh="这项工作探索如何让机器人从多个候选动作中做出更好的选择。我们在 D4RL Locomotion、AntMaze 和 Maze2D 上评估了 GEM，展示了无需重新训练策略即可调节推理计算量的方法。">This work explores how robots can choose better actions from several candidates. We evaluate GEM on D4RL Locomotion, AntMaze, and Maze2D, and show how to adjust inference compute without retraining the policy.</p><div class="news-links"><a href="https://arxiv.org/abs/2603.23232" data-en="Read paper ↗" data-zh="阅读论文 ↗">Read paper ↗</a></div></div></div>
+      </section>
+      <section id="research" aria-labelledby="research-heading">
+        <div class="section-heading"><h2 id="research-heading" data-en="Selected research" data-zh="代表性研究">Selected research</h2><a href="https://scholar.google.com/citations?user=9uCAKdgAAAAJ&amp;hl=en" data-en="All publications ↗" data-zh="全部论文 ↗">All publications ↗</a></div>
+        <article class="publication">
+          <div class="paper-year">2026<span>OFFLINE RL</span></div>
+          <div><h3><a href="https://arxiv.org/abs/2604.17919">Fisher Decorator: Refining Flow Policy via a Local Transport Map</a></h3>
+          <p class="conference">NeurIPS 2026</p>
+          <p class="authors">Xiaoyuan Cheng<sup>*</sup>, <strong>Haoyu Wang<sup>*</sup></strong>, Wenxuan Yuan, Ziyan Wang, Zonghao Chen, Li Zeng, Zhuo Sun</p>
+          <p class="contribution-note" data-en="* Co-first authors (equal contribution)." data-zh="* 共同第一作者（同等贡献）。">* Co-first authors (equal contribution).</p>
+          <p class="paper-description" data-en="This work introduces a Fisher-guided local transport map to improve flow policies while preserving multimodal behavior. It achieves state-of-the-art performance on OGBench and D4RL, with applications in robot locomotion and manipulation. We evaluate it in simulation with both state and visual inputs, and show that the learned policy can continue improving through online fine-tuning." data-zh="这项工作通过 Fisher 信息引导的局部传输映射改进流策略，在保留多模态行为的同时提升策略表现。方法在 OGBench 和 D4RL 上取得 SOTA 表现，可用于机器人运动与操作。我们在状态输入和视觉输入的仿真任务中进行了验证，并展示了策略通过在线微调继续改进的能力。">This work introduces a Fisher-guided local transport map to improve flow policies while preserving multimodal behavior. It achieves state-of-the-art performance on OGBench and D4RL, with applications in robot locomotion and manipulation. We evaluate it in simulation with both state and visual inputs, and show that the learned policy can continue improving through online fine-tuning.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2604.17919" data-en="Paper" data-zh="论文">Paper</a><a href="https://github.com/ARC0127/Fisher-Decorator" data-en="Code" data-zh="代码">Code</a></div></div>
+        </article>
+        <article class="publication">
+          <div class="paper-year">2026<span>OFFLINE RL</span></div>
+          <div><h3><a href="https://arxiv.org/abs/2603.23232">GEM: Guided Expectation-Maximization for Behavior-Normalized Candidate Action Selection in Offline RL</a></h3>
+          <p class="authors"><strong>Haoyu Wang</strong>, Jingcheng Wang, Shunyu Wu, Xinwei Xiao</p>
+          <p class="paper-description" data-en="This work studies how to choose better actions for robot locomotion and navigation when the data contains several plausible behaviors. GEM combines Gaussian-mixture policies, value estimates, and behavior support to rank candidate actions. We evaluate it on D4RL Locomotion, AntMaze, and Maze2D, with a practical benefit: inference compute can be adjusted without retraining." data-zh="这项工作关注一个问题：当数据中存在多种合理行为时，如何为机器人运动与导航选择更好的动作？GEM 结合高斯混合策略、价值估计与行为支持度，对候选动作排序。我们在 D4RL Locomotion、AntMaze 和 Maze2D 上进行了评估，并实现了无需重新训练即可调节推理计算量。">This work studies how to choose better actions for robot locomotion and navigation when the data contains several plausible behaviors. GEM combines Gaussian-mixture policies, value estimates, and behavior support to rank candidate actions. We evaluate it on D4RL Locomotion, AntMaze, and Maze2D, with a practical benefit: inference compute can be adjusted without retraining.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2603.23232" data-en="Paper" data-zh="论文">Paper</a><span class="venue" data-en="arXiv preprint" data-zh="arXiv 预印本">arXiv preprint</span></div></div>
+        </article>
+        <article class="publication">
+          <div class="paper-year">2026<span data-en="CONTROL" data-zh="控制系统">CONTROL</span></div>
+          <div><h3><a href="https://doi.org/10.1016/j.compag.2026.112221">Energy-efficient high-precision electric seed metering system: achieving high-speed, high-precision seeding with low energy consumption</a></h3>
+          <p class="authors"><strong>Haoyu Wang</strong>, Xiaoshuang Zhang, Li Yang, Dongxing Zhang, Tao Cui, Xiantao He, Jinsheng Mu, Lei Bao</p>
+          <p class="paper-description" data-en="This work develops high-precision motor control for high-speed electric seed metering. We combine linear active disturbance rejection control with field-oriented control to improve speed regulation and disturbance rejection while reducing energy use. The resulting controller provides a practical foundation for fast, precise agricultural machinery." data-zh="这项工作面向高速电驱排种，实现底层高精度电机控制。我们将线性自抗扰控制与磁场定向控制结合，提升转速控制精度和抗扰能力，同时降低能耗，为高速精密农业装备提供实用的控制基础。">This work develops high-precision motor control for high-speed electric seed metering. We combine linear active disturbance rejection control with field-oriented control to improve speed regulation and disturbance rejection while reducing energy use. The resulting controller provides a practical foundation for fast, precise agricultural machinery.</p>
+          <div class="paper-links"><a href="https://doi.org/10.1016/j.compag.2026.112221" data-en="Paper" data-zh="论文">Paper</a><span class="venue">Computers and Electronics in Agriculture, 254, 112221</span><a class="journal-metric" href="https://www.sciencedirect.com/journal/computers-and-electronics-in-agriculture" title="Journal Impact Factor 2025; checked 27 Sep 2026" data-en="2025 Impact Factor: 10.3" data-zh="2025 年影响因子：10.3">2025 Impact Factor: 10.3</a></div></div>
+        </article>
+        <article class="publication">
+          <div class="paper-year">2024<span data-en="CONTROL" data-zh="控制系统">CONTROL</span></div>
+          <div><h3><a href="https://doi.org/10.1016/j.compag.2024.108976">Comparative investigation and evaluation of electric-drive seed-metering systems across diverse speed ranges for enhanced high-precision seeding applications</a></h3>
+          <p class="authors"><strong>Haoyu Wang</strong>, Li Yang, Dongxing Zhang, Tao Cui, Xiantao He, Tainpu Xiao, Hongsheng Li, Zhaohui Du, Chunji Xie</p>
+          <p class="paper-description" data-en="This work helps guide motor and drive-system selection for intelligent agricultural machinery. We compare five motor configurations under speed changes, disturbances, turn compensation, and section control. The results show where each configuration performs well and where it falls short, providing a reference for future precision-seeding systems and agricultural automation." data-zh="这项工作为农业智能化装备的电机与驱动系统选型提供参考。我们对比了五类电机配置在变速、扰动、转弯补偿和分段控制下的表现，明确各自的优势与不足，为后续精密播种系统的硬件选型和自动化升级提供实验依据。">This work helps guide motor and drive-system selection for intelligent agricultural machinery. We compare five motor configurations under speed changes, disturbances, turn compensation, and section control. The results show where each configuration performs well and where it falls short, providing a reference for future precision-seeding systems and agricultural automation.</p>
+          <div class="paper-links"><a href="https://doi.org/10.1016/j.compag.2024.108976" data-en="Paper" data-zh="论文">Paper</a><span class="venue">Computers and Electronics in Agriculture, 222, 108976</span><a class="journal-metric" href="https://www.sciencedirect.com/journal/computers-and-electronics-in-agriculture" title="Journal Impact Factor 2025; checked 27 Sep 2026" data-en="2025 Impact Factor: 10.3" data-zh="2025 年影响因子：10.3">2025 Impact Factor: 10.3</a></div></div>
+        </article>
+      </section>
+      <section id="projects" aria-labelledby="projects-heading">
+        <div class="section-heading"><h2 id="projects-heading" data-en="Things I build" data-zh="项目与工具">Things I build</h2><a href="https://github.com/ARC0127?tab=repositories" data-en="Explore GitHub ↗" data-zh="浏览 GitHub ↗">Explore GitHub ↗</a></div>
+        <article class="zyr-project" aria-labelledby="zyr-title">
+          <div class="zyr-copy">
+            <div class="zyr-header"><h3 id="zyr-title">ZIP-your-Research <span style="font-weight:400;color:#71806f">/ ZYR</span></h3><span class="archive-badge" data-en="FINAL PUBLIC SNAPSHOT · v1.8.2" data-zh="最后公开版本快照 · v1.8.2">FINAL PUBLIC SNAPSHOT · v1.8.2</span></div>
+            <p data-en="ZYR is built for autoresearch: helping AI agents advance a research goal through literature review, hypothesis testing, experiments, and proofs, then revise their next steps based on evidence. A research reasoning tree and 149 research skills connect this process to code, writing, and figures." data-zh="ZYR 面向 autoresearch：帮助 AI 智能体围绕研究目标持续推进文献阅读、假设检验、实验与证明，并根据证据修正下一步。研究推理树与 149 项科研技能支撑这一过程，将研究判断与代码、写作和绘图连接起来。">ZYR is built for autoresearch: helping AI agents advance a research goal through literature review, hypothesis testing, experiments, and proofs, then revise their next steps based on evidence. A research reasoning tree and 149 research skills connect this process to code, writing, and figures.</p>
+            <p class="zyr-status" data-en="ZYR was acquired by a company. Subsequent development is closed-source; this snapshot preserves the project's final public version." data-zh="ZYR 已被公司收购，后续版本转为闭源开发。这里保留项目最后公开版本的展示快照。">ZYR was acquired by a company. Subsequent development is closed-source; this snapshot preserves the project's final public version.</p>
+            <div class="zyr-meta"><strong data-en="★ 82 Stars at archive" data-zh="★ 归档时 82 Stars">★ 82 Stars at archive</strong><span data-en="Archived · 15 Sep 2026" data-zh="归档于 2026 年 9 月 15 日">Archived · 15 Sep 2026</span><span>v1.8.2 · d816854</span></div>
+          </div>
+        </article>
+        <div class="project-grid">
+          <article class="project"><div class="project-title"><h3><a href="https://github.com/ARC0127/Claim">Claim</a></h3><span data-en="RESEARCH TOOLS" data-zh="科研工具">RESEARCH TOOLS</span></div><p data-en="An AI-assisted research skill for examining claims, assumptions, counterexamples, and proof obligations. Built to support understanding as well as direct review." data-zh="辅助研究者分析主张、假设、反例与证明义务的 AI 科研技能，同时支持循序辅导和直接审查。">An AI-assisted research skill for examining claims, assumptions, counterexamples, and proof obligations. Built to support understanding as well as direct review.</p><div class="project-actions"><a href="https://github.com/ARC0127/Claim" data-en="View project" data-zh="查看项目">View project</a><a class="star-count" href="https://github.com/ARC0127/Claim/stargazers" data-stars-repo="Claim" title="GitHub Stars"><span aria-hidden="true">☆</span> <span class="star-value">Stars ↗</span></a></div></article>
+          <article class="project"><div class="project-title"><h3><a href="https://github.com/ARC0127/Easy-Plot">Easy-Plot</a></h3><span data-en="VISUALIZATION" data-zh="可视化">VISUALIZATION</span></div><p data-en="An interactive workbench for importing, editing, and exporting scientific figures in SVG, HTML, and PNG formats. An evolving draft implementation." data-zh="用于导入、交互编辑和导出科研图形的工作台，支持 SVG、HTML 与 PNG。目前仍在持续完善中。">An interactive workbench for importing, editing, and exporting scientific figures in SVG, HTML, and PNG formats. An evolving draft implementation.</p><div class="project-actions"><a href="https://github.com/ARC0127/Easy-Plot" data-en="View project" data-zh="查看项目">View project</a><a class="star-count" href="https://github.com/ARC0127/Easy-Plot/stargazers" data-stars-repo="Easy-Plot" title="GitHub Stars"><span aria-hidden="true">☆</span> <span class="star-value">Stars ↗</span></a></div></article>
+        </div>
+      </section>
+    </main>
+    <div class="affiliations" aria-label="University and school affiliations">
+      <a class="school-link" href="https://sais.sjtu.edu.cn/" aria-label="School of Automation and Intelligent Sensing"><img class="school-mark" src="assets/sais-official.png" width="2247" height="241" alt="Shanghai Jiao Tong University — School of Automation and Intelligent Sensing"></a>
+    </div>
+    <footer><a href="#top" data-en="Back to top ↑" data-zh="返回顶部 ↑">Back to top ↑</a></footer>
+  </div>
+  <script>
+    (() => {
+      const button = document.getElementById('language');
+      function setLanguage(language) {
+        const chinese = language === 'zh';
+        document.documentElement.lang = chinese ? 'zh-CN' : 'en';
+        document.querySelectorAll('[data-en][data-zh]').forEach(element => {
+          element.textContent = element.dataset[language];
+        });
+        button.textContent = chinese ? 'EN' : '中文';
+        button.setAttribute('aria-label', chinese ? 'Switch to English' : '切换为中文');
+        document.querySelectorAll('[data-aria-en]').forEach(element => {
+          element.setAttribute('aria-label', chinese ? element.dataset.ariaZh : element.dataset.ariaEn);
+          element.title = chinese ? element.dataset.titleZh : element.dataset.titleEn;
+        });
+        document.title = chinese ? '王昊禹 · Haoyu Wang' : 'Haoyu Wang · 王昊禹';
+      }
+      button.addEventListener('click', () => setLanguage(document.documentElement.lang === 'en' ? 'zh' : 'en'));
+
+      // Fetch public counts on each visit; an unavailable API leaves a useful link.
+      document.querySelectorAll('[data-stars-repo]').forEach(async link => {
+        try {
+          const response = await fetch(`https://api.github.com/repos/ARC0127/${encodeURIComponent(link.dataset.starsRepo)}`, {
+            headers: { Accept: 'application/vnd.github+json' },
+            signal: AbortSignal.timeout(8000)
+          });
+          if (!response.ok) return;
+          const repository = await response.json();
+          if (!Number.isInteger(repository.stargazers_count) || repository.stargazers_count < 0) return;
+          link.querySelector('.star-value').textContent = `${repository.stargazers_count.toLocaleString('en-US')} Stars`;
+        } catch { /* Keep the GitHub link when offline or rate-limited. */ }
+      });
+
+      const announcement = document.getElementById('fisher-accepted');
+      const celebrate = document.getElementById('celebrate');
+      const layer = announcement.querySelector('.confetti-layer');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let celebrating = false;
+      async function burst() {
+        if (reducedMotion.matches || celebrating) return;
+        celebrating = true;
+        const card = announcement.getBoundingClientRect();
+        const trigger = celebrate.getBoundingClientRect();
+        const x = trigger.left - card.left + trigger.width / 2;
+        const y = trigger.top - card.top + trigger.height / 2;
+        const colors = ['#8b63c9', '#4e89d8', '#f2bb52', '#e885a4', '#58b6aa'];
+        const animations = [];
+        for (let i = 0; i < 30; i++) {
+          const piece = document.createElement('span');
+          piece.className = 'confetti-piece';
+          piece.style.left = `${x}px`;
+          piece.style.top = `${y}px`;
+          piece.style.background = colors[i % colors.length];
+          layer.appendChild(piece);
+          const dx = (Math.random() - .5) * 330;
+          const lift = 35 + Math.random() * 70;
+          const spin = (Math.random() - .5) * 900;
+          animations.push(piece.animate([
+            { transform:'translate(-50%,-50%) scale(.3)', opacity:0 },
+            { transform:`translate(${dx * .55}px,${-lift}px) rotate(${spin * .5}deg)`, opacity:1, offset:.35 },
+            { transform:`translate(${dx}px,${85 + Math.random() * 70}px) rotate(${spin}deg)`, opacity:0 }
+          ], { duration:1500 + Math.random() * 400, easing:'cubic-bezier(.2,.6,.4,1)' }));
+        }
+        animations.push(celebrate.animate([
+          { transform:'rotate(0deg)' }, { transform:'rotate(-16deg) scale(1.15)', offset:.3 }, { transform:'rotate(9deg)', offset:.65 }, { transform:'rotate(0deg)' }
+        ], { duration:450, easing:'ease-out' }));
+        await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
+        layer.replaceChildren();
+        celebrating = false;
+      }
+      celebrate.addEventListener('click', burst);
+      reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) {
+          layer.getAnimations({ subtree:true }).forEach(animation => animation.cancel());
+          celebrate.getAnimations().forEach(animation => animation.cancel());
+        }
+      });
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          observer.disconnect();
+          burst();
+        }
+      }, { threshold:.55 });
+      observer.observe(announcement);
+    })();
+  </script>
+</body>
+</html>
