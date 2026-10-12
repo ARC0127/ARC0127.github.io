@@ -161,6 +161,15 @@
       </div>
       <section class="news-board" id="news" aria-labelledby="news-heading">
         <div class="section-heading"><h2 id="news-heading">News <span class="heading-cn" data-en="" data-zh="研究动态"></span></h2><span class="news-label" data-en="Latest work & updates" data-zh="最新工作与进展">Latest work & updates</span></div>
+        <div class="news-item news-featured" id="dtrc-release">
+          <time datetime="2026-10-06"><span data-en="OCT" data-zh="10 月">OCT</span>2026</time>
+          <div>
+            <p class="news-type" data-en="Our new paper is now on arXiv." data-zh="我们的新论文已在 arXiv 上发布。">Our new paper is now on arXiv.</p>
+            <h3><a href="https://arxiv.org/abs/2610.08960">Directed Temporal Representations for Offline Visual Control</a></h3>
+            <p data-en="This work connects world-model representations to goal-directed action through a learned temporal distance. We evaluate DTRC across ten visual control tasks, with direct policy execution and no test-time trajectory search." data-zh="这项工作通过学习有方向的时间距离，将世界模型表征与目标导向的动作学习连接起来。我们在十项视觉控制任务上评估了 DTRC，策略可直接执行，无需在测试时搜索动作轨迹。">This work connects world-model representations to goal-directed action through a learned temporal distance. We evaluate DTRC across ten visual control tasks, with direct policy execution and no test-time trajectory search.</p>
+            <div class="news-links"><a href="https://arxiv.org/abs/2610.08960" data-en="Read paper ↗" data-zh="阅读论文 ↗">Read paper ↗</a><a href="https://github.com/Chenyang-Yuan/DTRC" data-en="Code ↗" data-zh="项目代码 ↗">Code ↗</a><a href="https://chenyang-yuan.github.io/dtrc-project/" data-en="Project page ↗" data-zh="项目主页 ↗">Project page ↗</a></div>
+          </div>
+        </div>
         <div class="news-item news-featured news-celebration" id="fisher-accepted">
           <time datetime="2026"><span>2026</span>NeurIPS</time>
           <div>
@@ -176,6 +185,14 @@
       </section>
       <section id="research" aria-labelledby="research-heading">
         <div class="section-heading"><h2 id="research-heading" data-en="Selected research" data-zh="代表性研究">Selected research</h2><a href="https://scholar.google.com/citations?user=9uCAKdgAAAAJ&amp;hl=en" data-en="All publications ↗" data-zh="全部论文 ↗">All publications ↗</a></div>
+        <article class="publication" id="dtrc">
+          <div class="paper-year">2026<span data-en="VISUAL CONTROL" data-zh="视觉控制">VISUAL CONTROL</span></div>
+          <div><h3><a href="https://arxiv.org/abs/2610.08960">Directed Temporal Representations for Offline Visual Control</a></h3>
+          <p class="venue" data-en="arXiv · October 2026" data-zh="arXiv · 2026 年 10 月">arXiv · October 2026</p>
+          <p class="authors">Chenyang Yuan, <strong>Haoyu Wang</strong>, Zhuo Sun, Xiaoyuan Cheng</p>
+          <p class="paper-description" data-en="This work turns frozen world-model features into a directed temporal distance: how many steps it takes to reach a visual goal, accounting for the fact that going forward and going back can have different costs. DTRC uses progress toward the goal to train a flow policy that acts without test-time trajectory search. Across ten visual control tasks, it achieves best or tied-best performance among the evaluated baselines on PushT, TwoRoom, and Reacher, with further evaluation on visual OGBench navigation and manipulation tasks." data-zh="这项工作将冻结的世界模型特征转化为有方向的时间距离，估计到达视觉目标所需的步数，并区分往返路径的不同代价。DTRC 利用朝向目标的进展训练流策略，执行时无需搜索动作轨迹。我们在十项视觉控制任务上进行评估，在 PushT、TwoRoom 和 Reacher 上取得所比较方法中的最优或并列最优表现，并进一步测试了视觉 OGBench 中的导航与操作任务。">This work turns frozen world-model features into a directed temporal distance: how many steps it takes to reach a visual goal, accounting for the fact that going forward and going back can have different costs. DTRC uses progress toward the goal to train a flow policy that acts without test-time trajectory search. Across ten visual control tasks, it achieves best or tied-best performance among the evaluated baselines on PushT, TwoRoom, and Reacher, with further evaluation on visual OGBench navigation and manipulation tasks.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2610.08960" data-en="Paper" data-zh="论文">Paper</a><a href="https://github.com/Chenyang-Yuan/DTRC" data-en="Code" data-zh="代码">Code</a><a href="https://chenyang-yuan.github.io/dtrc-project/" data-en="Project page" data-zh="项目主页">Project page</a></div></div>
+        </article>
         <article class="publication">
           <div class="paper-year">2026<span>OFFLINE RL</span></div>
           <div><h3><a href="https://arxiv.org/abs/2604.17919">Fisher Decorator: Refining Flow Policy via a Local Transport Map</a></h3>
